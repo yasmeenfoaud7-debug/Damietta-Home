@@ -1,0 +1,347 @@
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دامياتا هوم | أثاث وموبيليات دمياط الفاخرة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        wood: {
+                            50: '#fdfbf7', 100: '#f7f2e9', 200: '#eee3d0',
+                            500: '#bd9353', 700: '#845b36', 800: '#6d4a31', 900: '#593e2b',
+                        }
+                    },
+                    fontFamily: { sans: ['Cairo', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style> body { font-family: 'Cairo', sans-serif; } </style>
+</head>
+<body class="bg-wood-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-wood-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-wood-700 text-white rounded-xl flex items-center justify-center text-xl shadow">
+                    <i class="fa-solid fa-couch"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-black text-wood-900 dark:text-wood-200 block">دامياتا هوم</span>
+                    <span class="text-[10px] text-wood-700 dark:text-wood-500 font-bold tracking-widest block">أثاث دمياط الفاخر</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="p-2 rounded-lg bg-wood-100 dark:bg-slate-800 text-wood-800 dark:text-wood-200">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+                <button onclick="toggleCart()" class="relative p-2.5 bg-wood-700 hover:bg-wood-800 text-white rounded-xl flex items-center gap-2 shadow">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="text-xs font-bold">السلة</span>
+                    <span id="cart-count" class="absolute -top-2 -left-2 bg-red-600 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    
+    <section class="py-16 md:py-24 bg-gradient-to-b from-wood-100/50 to-transparent dark:from-slate-800/40">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-center md:text-right">
+                <span class="inline-block px-3 py-1 bg-wood-200 dark:bg-wood-900/50 text-wood-800 dark:text-wood-200 rounded-full text-xs font-extrabold">
+                    ✨ خشب زان أحمر طبيعي 100%
+                </span>
+                <h1 class="text-4xl md:text-5xl font-black leading-tight">
+                    أحدث تصاميم الموبيليا والأثاث من <span class="text-wood-700 dark:text-wood-500">قلب دمياط</span>
+                </h1>
+                <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed">
+                    نصنع لك الفخامة والراحة بلمسات حرفيي دمياط الأصلاء، مع إمكانية التنفيذ حسب الطلب والشحن لكافة المحافظات.
+ </p>
+            </div>
+            <div class="relative">
+                <img src="images/A1.jpg" alt="أثاث دمياط" class="rounded-2xl shadow-xl w-full h-[380px] object-cover" onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600'">
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="py-8 max-w-7xl mx-auto px-4">
+        <h2 class="text-2xl font-black text-center mb-6">أقسام الأثاث</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+            <button onclick="filterCategory('all', this)" class="cat-btn bg-wood-700 text-white p-3 rounded-xl font-bold text-xs shadow transition">الكل</button>
+            <button onclick="filterCategory('living', this)" class="cat-btn bg-white dark:bg-slate-800 border border-wood-200 dark:border-slate-700 p-3 rounded-xl font-bold text-xs transition">انتريه وصالون</button>
+            <button onclick="filterCategory('kids', this)" class="cat-btn bg-white dark:bg-slate-800 border border-wood-200 dark:border-slate-700 p-3 rounded-xl font-bold text-xs transition">غرف أطفال</button>
+            <button onclick="filterCategory('bedroom', this)" class="cat-btn bg-white dark:bg-slate-800 border border-wood-200 dark:border-slate-700 p-3 rounded-xl font-bold text-xs transition">غرف كبيرة</button>
+            <button onclick="filterCategory('kitchen', this)" class="cat-btn bg-white dark:bg-slate-800 border border-wood-200 dark:border-slate-700 p-3 rounded-xl font-bold text-xs transition">مطابخ</button>
+            <button onclick="filterCategory('niche', this)" class="cat-btn bg-white dark:bg-slate-800 border border-wood-200 dark:border-slate-700 p-3 rounded-xl font-bold text-xs transition">نيش</button>
+        </div>
+    </section>
+
+    
+    <section class="py-12 bg-wood-100/30 dark:bg-slate-800/30">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-black mb-8">المعروضات الحالية</h2>
+            <div id="products-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+   
+    <section class="py-16 max-w-7xl mx-auto px-4">
+        <div class="bg-wood-900 text-white rounded-3xl p-8 md:p-12 shadow-xl grid md:grid-cols-2 gap-8 items-center">
+            <div>
+                <h2 class="text-3xl font-black mb-4">عندك تصميم خاص أو مقاسات معينة؟</h2>
+                <p class="text-wood-200 text-sm leading-relaxed">أرسل لنا تفاصيل والمقاسات ونوع الخشب ولون القماش المطلوب، وسيقوم المصنع بتنفيذه لك خصيصاً.</p>
+            </div>
+            <form onsubmit="handleCustomOrder(event)" class="space-y-3 bg-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                <input type="text" id="cust-name" placeholder="الاسم" required class="w-full p-2.5 rounded-lg bg-white/20 text-white placeholder-wood-200 text-sm focus:outline-none">
+                <input type="tel" id="cust-phone" placeholder="رقم الهاتف" required class="w-full p-2.5 rounded-lg bg-white/20 text-white placeholder-wood-200 text-sm focus:outline-none">
+                <textarea id="cust-details" placeholder="التفاصيل والمقاسات..." rows="3" required class="w-full p-2.5 rounded-lg bg-white/20 text-white placeholder-wood-200 text-sm focus:outline-none"></textarea>
+                <button type="submit" class="w-full py-3 bg-wood-500 hover:bg-wood-400 text-wood-900 font-black rounded-xl transition">إرسال الطلب عبر الواتساب</button>
+            </form>
+        </div>
+    </section>
+
+    
+    <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+        <div onclick="toggleCart()" class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"></div>
+        <div class="fixed inset-y-0 left-0 w-full max-w-md bg-white dark:bg-slate-900 p-6 flex flex-col justify-between shadow-2xl">
+ <div>
+                <div class="flex justify-between items-center mb-6 border-b pb-4">
+                    <h3 class="font-bold text-lg">سلة المشتريات</h3>
+                    <button onclick="toggleCart()" class="text-xl font-bold">✕</button>
+                </div>
+                <div id="cart-items" class="space-y-4 max-h-[60vh] overflow-y-auto"></div>
+            </div>
+            <div class="border-t pt-4 space-y-4">
+                <div class="flex justify-between font-bold text-lg">
+                    <span>الإجمالي:</span>
+                    <span id="cart-total" class="text-wood-700">0 ج.م</span>
+                </div>
+                <button onclick="checkoutWhatsApp()" class="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>تأكيد الطلب عبر الواتساب</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+   
+    <script>
+        const products = [
+            { id: 101, name: "صالون مذهب فاخر", category: "living", price: 55000, image: "images/A1.jpg", wood: "زان أحمر", description: "كنبة 3 + كنبة 2 + 2 فوتيه + ترابيزة رخام." },
+            { id: 102, name: "انتريه مودرن أمريكي", category: "living", price: 42000, image: "images/A2.jpg", wood: "زان + اسفنج", description: "قماش جلد هامر عالي التحمل ضد البقع." },
+            { id: 103, name: "ركنة مودرن حرف L", category: "living", price: 36000, image: "images/A3.jpg", wood: "ان أحمر", description: "مكونة من قطع متحركة + بف إضافي." },
+            { id: 104, name: "انتريه نيو كلاسيك", category: "living", price: 48000, image: "images/A4.jpg", wood: "زان مجفف", description: "تصميم أنيق جداً يناسب المساحات الكبيرة." },
+            { id: 105, name: "صالون مودرن زيتوني", category: "living", price: 46000, image: "images/A5.jpg", wood: "زان أحمر", description: "تنجيد كامل بأسفنج ممتاز." },
+            { id: 106, name: "انتريه حرف U كبير", category: "living", price: 51000, image: "images/A6.jpg", wood: "زان طبيعي", description: "يتسع لـ 8 أشخاص مع ترابيزة وسط." },
+
+            { id: 201, name: "غرفة أطفال مودرن 2 سرير", category: "kids", price: 38000, image: "images/C1.jpg", wood: "زان + M.D.F", description: "2 سرير 120 سم + دولاب جرار + مكتب." },
+            { id: 202, name: "غرفة أطفال دورين", category: "kids", price: 42000, image: "images/C2.jpg", wood: "زان أحمر", description: "سلم أدراج وتخزين مدمج وأمان كامل." },
+            { id: 203, name: "غرفة أطفال وبناتي وردي", category: "kids", price: 39000, image: "images/C3.jpg", wood: "زان مجفف", description: "تسريحة صغيرة ودولاب 3 ضلفة." },
+            { id: 204, name: "غرفة شبابي مودرن", category: "kids", price: 41000, image: "images/C4.jpg", wood: "زان أحمر", description: "سرير 140 سم + مكتب مذاكرة كبير." },
+            { id: 205, name: "غرفة أطفال خشب طبيعي", category: "kids", price: 37000, image: "images/C5.jpg", wood: "زان طبيعي", description: "دهانات دوكو آمنة للأطفال." },
+            { id: 206, name: "غرفة أطفال أشكال كرتونية", category: "kids", price: 40000, image: "images/C6.jpg", wood: "زان + MDF", description: "تصميمات مرحة مع إضاءة خافتة." },
+            { id: 207, name: "غرفة أطفال أولادي أزرق", category: "kids", price: 38500, image: "images/C7.jpg", wood: "زان أحمر", description: "دولاب ومكتب دراسة متكامل." },
+
+            { id: 301, name: "غرفة نوم ماستر إيطالي - زان", category: "bedroom", price: 68000, image: "images/K1.jpg", wood: "زان أحمر", description: "دولاب 6 ضلفة + سرير 160 سم + تسريحة." },
+            { id: 302, name: "غرفة نوم كلاسيك مذهبة", category: "bedroom", price: 75000, image: "images/K2.jpg", wood: "زان أحمر - أويمة", description: "دولاب جرار هيدروليك + سرير كابيتونيه." },
+            { id: 303, name: "غرفة نوم مودرن رمادي", category: "bedroom", price: 62000, image: "images/K3.jpg", wood: "زان + إسباني", description: "تصميم مودرن عصري مع إضاءة LED مدمجة." },
+            { id: 304, name: "غرفة نوم نيو كلاسيك", category: "bedroom", price: 70000, image: "images/K4.jpg", wood: "زان أحمر", description: "سرير 180 سم + كومود بقرصة رخام." },
+            { id: 305, name: "غرفة نوم هادئة - بيج", category: "bedroom", price: 64000, image: "images/K5.jpg", wood: "زان أحمر", description: "تشطيب شامبين فاخر مع أقمشة مخملية." },
+            { id: 306, name: "غرفة نوم الملكة", category: "bedroom", price: 82000, image: "images/K6.jpg", wood: "زان أحمر - ورق ذهب", description: "أويمة يدوي دمياطي فاخرة جداً." },
+            { id: 307, name: "غرفة نوم مودرن بسيطة", category: "bedroom", price: 59000, image: "images/K7.jpg", wood: "زان مجفف", description: "تقسيم داخلي مميز للدولاب مع أدراج." },
+
+            { id: 401, name: "مطبخ خشب زان مودرن", category: "kitchen", price: 45000, image: "images/M1.jpg", wood: "زان أحمر", description: "سعر المتر شامل الإكسسوارات والرخام." },
+ { id: 402, name: "مطبخ أرو ماسيف كلاسيك", category: "kitchen", price: 55000, image: "images/M2.jpg", wood: "أرو طبيعي", description: "وحدات تخزين ذكية ومفصلات هيدروليك." },
+            { id: 403, name: "مطبخ مودرن خشب + خشمونيوم", category: "kitchen", price: 42000, image: "images/M3.jpg", wood: "زان + كونتر", description: "مقاوم للماء والحرارة والخدش." },
+            { id: 404, name: "مطبخ أمريكي مفتوح (جزيرة)", category: "kitchen", price: 48000, image: "images/M4.jpg", wood: "زان طبيعي", description: "يشمل ترابيزة جزيرة وسط للمطبخ." },
+            { id: 405, name: "مطبخ رمادي مودرن", category: "kitchen", price: 39000, image: "images/M5.jpg", wood: "كونتر زان", description: "تصميم عصري بدون مقابض." },
+
+            { id: 501, name: "نيش زان كلاسيك مذهب", category: "niche", price: 18000, image: "images/N1.jpg", wood: "زان أحمر", description: "نيش 2 ضلفة مع إضاءة ليد وأويمة." },
+            { id: 502, name: "نيش مودرن إيطالي", category: "niche", price: 16500, image: "images/N2.jpg", wood: "زان + زجاج", description: "تصميم أنيق وبسيط يناسب الغرف المودرن." },
+            { id: 503, name: "نيش نيو كلاسيك", category: "niche", price: 19000, image: "images/N3.jpg", wood: "زان أحمر", description: "مصمم بأرفف زجاجية وإضاءة جانبية." }
+        ];
+
+        let cart = [];
+        let activeCat = 'all';
+
+        
+ function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            
+            const filtered = activeCat === 'all' ? products : products.filter(item => item.category === activeCat);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-wood-100 dark:border-slate-800 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between p-4";
+                
+               
+                const imgContainer = document.createElement('div');
+                imgContainer.className = "relative h-56 overflow-hidden bg-slate-100 dark:bg-slate-800 rounded-xl mb-4";
+                
+                const img = document.createElement('img');
+                img.src = item.image;
+                img.alt = item.name;
+                img.className = "w-full h-full object-cover";
+                imgContainer.appendChild(img);
+
+                const woodBadge = document.createElement('span');
+                woodBadge.className = "absolute top-3 right-3 bg-wood-800 text-white text-[10px] font-bold px-2.5 py-1 rounded-full";
+                woodBadge.textContent = item.wood;
+                imgContainer.appendChild(woodBadge);
+
+                card.appendChild(imgContainer);
+
+                
+                const textDiv = document.createElement('div');
+                
+                const title = document.createElement('h3');
+                title.className = "font-bold text-base text-slate-900 dark:text-white";
+                title.textContent = item.name;
+                textDiv.appendChild(title);
+
+                const desc = document.createElement('p');
+                desc.className = "text-slate-500 dark:text-slate-400 text-xs mt-1 leading-relaxed";
+                desc.textContent = item.description;
+                textDiv.appendChild(desc);
+
+                card.appendChild(textDiv);
+
+                
+                const footerDiv = document.createElement('div');
+                footerDiv.className = "flex justify-between items-center mt-4 pt-3 border-t border-wood-100 dark:border-slate-800";
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = "font-black text-wood-700 text-base";
+                priceSpan.textContent = item.price.toLocaleString() + " ج.م";
+                footerDiv.appendChild(priceSpan);
+
+                const btn = document.createElement('button');
+                btn.className = "px-3 py-2 bg-wood-700 hover:bg-wood-800 text-white font-bold text-xs rounded-xl shadow";
+                btn.textContent = "إضافة للسلة";
+                btn.onclick = () => addToCart(item.id);
+                footerDiv.appendChild(btn);
+
+                card.appendChild(footerDiv);
+
+                grid.appendChild(card);
+            });
+        }
+
+       
+
+        function filterCategory(cat, btnElement) {
+            activeCat = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-wood-700', 'text-white');
+                btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-200');
+            });
+            if (btnElement) {
+                btnElement.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-200');
+                btnElement.classList.add('bg-wood-700', 'text-white');
+            }
+            renderProducts();
+        }
+ function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            if(drawer) drawer.classList.toggle('hidden');
+        }
+
+        function addToCart(id) {
+            const item = products.find(p => p.id === id);
+            if(!item) return;
+            const inCart = cart.find(c => c.id === id);
+            if (inCart) { 
+                inCart.qty += 1; 
+            } else { 
+                cart.push({ ...item, qty: 1 }); 
+            }
+            updateCart();
+            toggleCart();
+        }
+
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            if(!cartItemsContainer) return;
+            cartItemsContainer.innerHTML = '';
+            let total = 0; 
+            let count = 0;
+            
+            cart.forEach(item => {
+                total += item.price * item.qty;
+                count += item.qty;
+                
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between bg-wood-50 dark:bg-slate-800 p-3 rounded-xl border mb-2";
+                
+                const infoDiv = document.createElement('div');
+                
+                const title = document.createElement('h4');
+                title.className = "font-bold text-sm";
+                title.textContent = item.name;
+                infoDiv.appendChild(title);
+                
+                const priceSpan = document.createElement('span');
+                priceSpan.className = "text-xs text-wood-700 font-bold";
+                priceSpan.textContent = (item.price * item.qty).toLocaleString() + " ج.م";
+                infoDiv.appendChild(priceSpan);
+                
+                div.appendChild(infoDiv);
+                
+                const qtySpan = document.createElement('span');
+                qtySpan.className = "text-xs font-bold";
+                qtySpan.textContent = "العدد: " + item.qty;
+                div.appendChild(qtySpan);
+                
+                cartItemsContainer.appendChild(div);
+            });
+            
+            const totalEl = document.getElementById('cart-total');
+            const countEl = document.getElementById('cart-count');
+            if(totalEl) totalEl.textContent = total.toLocaleString() + " ج.م";
+            if(countEl) countEl.textContent = count;
+        }
+
+        
+            
+            
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return alert('السلة فارغة!');
+            let msg = "مرحباً دامياتا هوم، أرغب في طلب:\n\n";
+            cart.forEach((i, idx) => msg += (idx + 1) + ". " + i.name + " (عدد: " + i.qty + ")\n");
+            window.open("https://wa.me/201000000000?text=" + encodeURIComponent(msg), '_blank');
+        }
+
+        function handleCustomOrder(e) {
+            e.preventDefault();
+            const nameEl = document.getElementById('cust-name');
+            const phoneEl = document.getElementById('cust-phone');
+            const detailsEl = document.getElementById('cust-details');
+            if(`!nameEl  !phoneEl  !detailsEl`) return;
+            const msg = "Order Custom:\nName: " + nameEl.value + "\nPhone: " + phoneEl.value + "\nDetails: " + detailsEl.value;
+            window.open("https://wa.me/201000000000?text=" + encodeURIComponent(msg), '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+
+            const themeBtn = document.getElementById('theme-toggle');
+            if(themeBtn) {
+                themeBtn.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                });
+            }
+        });
+    </script>
